@@ -23,6 +23,34 @@
       --sombra-suave: 0 8px 30px rgba(33, 118, 174, 0.12);
       --radio: 18px;
       --transicion: 0.3s ease;
+      --bg-body: #FFFFFF;
+      --bg-card: #FFFFFF;
+      --bg-section: #F0FAFF;
+      --text-primary: #0D2B3E;
+      --text-secondary: #334;
+      --text-muted: #667;
+      --border-color: rgba(91, 200, 245, 0.3);
+      --nav-bg: rgba(255, 255, 255, 0.95);
+      --modal-bg: #FFFFFF;
+      --input-bg: #F0FAFF;
+    }
+
+    [data-theme="dark"] {
+      --blanco: #1A1A2E;
+      --gris-claro: #16213E;
+      --oscuro: #E0E0E0;
+      --bg-body: #0F0F1A;
+      --bg-card: #1A1A2E;
+      --bg-section: #16213E;
+      --text-primary: #E0E0E0;
+      --text-secondary: #B0B0C0;
+      --text-muted: #8888A0;
+      --border-color: rgba(91, 200, 245, 0.2);
+      --nav-bg: rgba(26, 26, 46, 0.95);
+      --modal-bg: #1A1A2E;
+      --input-bg: #16213E;
+      --sombra-suave: 0 8px 30px rgba(0, 0, 0, 0.3);
+      --azul: #5BC8F5;
     }
 
     html {
@@ -31,19 +59,21 @@
 
     body {
       font-family: 'Nunito', sans-serif;
-      color: var(--oscuro);
-      background: var(--blanco);
+      color: var(--text-primary);
+      background: var(--bg-body);
       overflow-x: hidden;
       line-height: 1.6;
+      transition: background 0.4s ease, color 0.4s ease;
     }
 
+    /* ========== NAV ========== */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
+      background: var(--nav-bg);
       backdrop-filter: blur(12px);
       border-bottom: 2px solid var(--celeste);
       display: flex;
@@ -52,6 +82,7 @@
       padding: 0 2.5rem;
       height: 70px;
       box-shadow: 0 2px 20px rgba(91, 200, 245, 0.15);
+      transition: background 0.4s ease;
     }
 
     .nav-logo {
@@ -77,6 +108,12 @@
       margin-top: -4px;
     }
 
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
     .nav-links {
       display: flex;
       gap: 2rem;
@@ -85,7 +122,7 @@
 
     .nav-links a {
       text-decoration: none;
-      color: var(--oscuro);
+      color: var(--text-primary);
       font-weight: 700;
       font-size: 0.9rem;
       letter-spacing: 1px;
@@ -99,6 +136,62 @@
     .nav-links a.active {
       color: var(--turquesa);
       border-bottom-color: var(--turquesa);
+    }
+
+    .theme-toggle {
+      background: var(--gris-claro);
+      border: 2px solid var(--border-color);
+      border-radius: 50px;
+      padding: 6px 14px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: var(--transicion);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-primary);
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--turquesa);
+      transform: scale(1.05);
+    }
+
+    .cart-nav-btn {
+      position: relative;
+      background: var(--gradiente);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 8px 20px;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transicion);
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .cart-nav-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(33, 118, 174, 0.4);
+    }
+
+    .cart-count {
+      background: #FF4757;
+      color: #fff;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 800;
     }
 
     .hamburger {
@@ -116,6 +209,7 @@
       transition: var(--transicion);
     }
 
+    /* ========== PAGE ========== */
     .page {
       display: none;
       padding-top: 70px;
@@ -126,6 +220,7 @@
       display: block;
     }
 
+    /* ========== HERO ========== */
     .hero {
       position: relative;
       min-height: 92vh;
@@ -146,7 +241,7 @@
     .hero-content {
       position: relative;
       text-align: center;
-      color: var(--blanco);
+      color: #fff;
       padding: 2rem;
       max-width: 800px;
       animation: fadeUp 1s ease both;
@@ -185,8 +280,8 @@
     .btn-primary {
       display: inline-block;
       padding: 14px 36px;
-      background: var(--blanco);
-      color: var(--azul);
+      background: #fff;
+      color: #2176AE;
       font-weight: 800;
       font-size: 0.95rem;
       letter-spacing: 1px;
@@ -196,12 +291,12 @@
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
       border: none;
       cursor: pointer;
+      font-family: 'Nunito', sans-serif;
     }
 
     .btn-primary:hover {
       transform: translateY(-3px);
       box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25);
-      background: var(--gris-claro);
     }
 
     /* ========== GALERÍA STRIP ========== */
@@ -238,7 +333,7 @@
       background: linear-gradient(to bottom, transparent 60%, rgba(26, 191, 184, 0.35));
     }
 
-    /* ========== SECCIONES ========== */
+    /* ========== SECTIONS ========== */
     .section {
       padding: 5rem 2rem;
     }
@@ -284,7 +379,7 @@
     .about-text p {
       font-size: 1.05rem;
       line-height: 1.8;
-      color: #334;
+      color: var(--text-secondary);
       margin-bottom: 1rem;
     }
 
@@ -302,7 +397,8 @@
 
     /* ========== SUBLIMACIÓN ========== */
     .sub-section {
-      background: var(--gris-claro);
+      background: var(--bg-section);
+      transition: background 0.4s ease;
     }
 
     .sub-cards {
@@ -313,11 +409,11 @@
     }
 
     .sub-card {
-      background: var(--blanco);
+      background: var(--bg-card);
       border-radius: 16px;
       padding: 2rem 1.5rem;
       text-align: center;
-      border: 1.5px solid rgba(91, 200, 245, 0.3);
+      border: 1.5px solid var(--border-color);
       box-shadow: var(--sombra-suave);
       transition: var(--transicion);
     }
@@ -342,14 +438,15 @@
     }
 
     .sub-card p {
-      color: #556;
+      color: var(--text-muted);
       font-size: 0.9rem;
       line-height: 1.6;
     }
 
-    /* ========== CATÁLOGO (GRID) ========== */
+    /* ========== CATÁLOGO ========== */
     .cat-section {
-      background: var(--gris-claro);
+      background: var(--bg-section);
+      transition: background 0.4s ease;
     }
 
     .cat-grid {
@@ -366,13 +463,13 @@
     }
 
     .cat-card {
-      background: var(--blanco);
+      background: var(--bg-card);
       border-radius: var(--radio);
       overflow: hidden;
       box-shadow: var(--sombra-suave);
       cursor: pointer;
       transition: var(--transicion);
-      border: 1.5px solid rgba(91, 200, 245, 0.2);
+      border: 1.5px solid var(--border-color);
       position: relative;
     }
 
@@ -406,7 +503,7 @@
 
     .cat-card p {
       font-size: 0.82rem;
-      color: #667;
+      color: var(--text-muted);
     }
 
     .cat-badge {
@@ -448,7 +545,7 @@
       position: fixed;
       inset: 0;
       z-index: 2000;
-      background: rgba(13, 43, 62, 0.7);
+      background: rgba(13, 43, 62, 0.75);
       backdrop-filter: blur(6px);
       align-items: center;
       justify-content: center;
@@ -460,16 +557,17 @@
     }
 
     .modal {
-      background: var(--blanco);
+      background: var(--modal-bg);
       border-radius: 24px;
       width: 100%;
-      max-width: 860px;
+      max-width: 900px;
       max-height: 90vh;
       overflow-y: auto;
       padding: 2.5rem;
       position: relative;
       animation: fadeUp 0.35s ease;
       box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+      transition: background 0.4s ease;
     }
 
     .modal-close {
@@ -527,11 +625,11 @@
     .prod-card {
       border-radius: 14px;
       overflow: hidden;
-      border: 1.5px solid rgba(91, 200, 245, 0.3);
+      border: 1.5px solid var(--border-color);
       transition: var(--transicion);
       display: flex;
       flex-direction: column;
-      background: var(--blanco);
+      background: var(--bg-card);
     }
 
     .prod-card:hover {
@@ -542,7 +640,7 @@
 
     .prod-card img {
       width: 100%;
-      height: 150px;
+      height: 140px;
       object-fit: cover;
     }
 
@@ -554,7 +652,7 @@
     }
 
     .prod-info h4 {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 800;
       color: var(--azul);
       margin-bottom: 4px;
@@ -567,13 +665,72 @@
     }
 
     .prod-desc {
-      font-size: 0.78rem;
-      color: #778;
+      font-size: 0.75rem;
+      color: var(--text-muted);
       margin-top: 3px;
       flex: 1;
     }
 
-    .whatsapp-btn {
+    .prod-options {
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .prod-options label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .prod-options select {
+      width: 100%;
+      padding: 6px 8px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border-color);
+      background: var(--input-bg);
+      color: var(--text-primary);
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.8rem;
+      outline: none;
+      cursor: pointer;
+      transition: border-color 0.3s;
+    }
+
+    .prod-options select:focus {
+      border-color: var(--turquesa);
+    }
+
+    .color-options {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .color-dot {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: var(--transicion);
+      position: relative;
+    }
+
+    .color-dot:hover {
+      transform: scale(1.15);
+    }
+
+    .color-dot.selected {
+      border-color: var(--turquesa);
+      box-shadow: 0 0 0 2px var(--turquesa);
+    }
+
+    .add-cart-btn {
       display: block;
       margin-top: 10px;
       padding: 10px;
@@ -581,19 +738,378 @@
       color: #fff;
       text-align: center;
       border-radius: 10px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.85rem;
+      border: none;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 0.82rem;
       transition: transform 0.2s, box-shadow 0.2s;
+      font-family: 'Nunito', sans-serif;
+      width: 100%;
     }
 
-    .whatsapp-btn:hover {
+    .add-cart-btn:hover {
       transform: scale(1.03);
       box-shadow: 0 6px 18px rgba(33, 118, 174, 0.4);
     }
 
-    /* ========== CONTACTO ========== */
-    .contact-grid {
+    .add-cart-btn.added {
+      background: #25D366;
+    }
+
+    .product-qty {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .product-qty label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+    }
+
+    .qty-control {
+      display: flex;
+      align-items: center;
+      border: 1.5px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--input-bg);
+    }
+
+    .qty-control button {
+      background: transparent;
+      border: none;
+      width: 28px;
+      height: 28px;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--azul);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .qty-control button:hover {
+      background: var(--celeste);
+      color: #fff;
+    }
+
+    .qty-control input {
+      width: 32px;
+      text-align: center;
+      border: none;
+      background: transparent;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--text-primary);
+      outline: none;
+    }
+
+    /* ========== CARRITO ========== */
+    .cart-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2500;
+      background: rgba(13, 43, 62, 0.6);
+      backdrop-filter: blur(4px);
+    }
+
+    .cart-overlay.open {
+      display: block;
+    }
+
+    .cart-panel {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 400px;
+      max-width: 92vw;
+      height: 100vh;
+      background: var(--modal-bg);
+      z-index: 2600;
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-left: 3px solid var(--turquesa);
+    }
+
+    .cart-panel.open {
+      right: 0;
+    }
+
+    .cart-header {
+      padding: 1.5rem;
+      border-bottom: 2px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--azul);
+    }
+
+    .cart-header button {
+      background: var(--gris-claro);
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--azul);
+      font-weight: 800;
+      transition: 0.2s;
+    }
+
+    .cart-header button:hover {
+      background: var(--celeste);
+      color: #fff;
+    }
+
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem 1.5rem;
+    }
+
+    .cart-empty {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--text-muted);
+    }
+
+    .cart-empty span {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-color);
+      align-items: flex-start;
+    }
+
+    .cart-item img {
+      width: 60px;
+      height: 60px;
+      border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .cart-item-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .cart-item-info h4 {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--azul);
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .cart-item-info .item-variant {
+      font-size: 0.72rem;
+      color: var(--turquesa);
+      font-weight: 700;
+    }
+
+    .cart-item-info .item-price {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--turquesa);
+      margin-top: 2px;
+    }
+
+    .cart-item-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .cart-item-actions button {
+      background: var(--gris-claro);
+      border: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      cursor: pointer;
+      color: var(--azul);
+      transition: 0.2s;
+    }
+
+    .cart-item-actions button:hover {
+      background: var(--celeste);
+      color: #fff;
+    }
+
+    .cart-item-actions span {
+      font-size: 0.8rem;
+      font-weight: 700;
+      min-width: 20px;
+      text-align: center;
+      color: var(--text-primary);
+    }
+
+    .cart-item-remove {
+      background: transparent !important;
+      color: #FF4757 !important;
+      font-size: 1rem !important;
+      width: auto !important;
+      padding: 0 4px;
+    }
+
+    .cart-footer {
+      padding: 1.5rem;
+      border-top: 2px solid var(--border-color);
+      background: var(--bg-section);
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .cart-total span:last-child {
+      color: var(--turquesa);
+      font-size: 1.3rem;
+    }
+
+    .cart-whatsapp-btn {
+      width: 100%;
+      padding: 14px;
+      background: #25D366;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transicion);
+      font-family: 'Nunito', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+    }
+
+    .cart-whatsapp-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
+    }
+
+    .cart-whatsapp-btn:disabled {
+      background: #999;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+
+    .cart-clear-btn {
+      width: 100%;
+      padding: 10px;
+      background: transparent;
+      border: 1.5px solid var(--border-color);
+      border-radius: 10px;
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      margin-top: 8px;
+      font-family: 'Nunito', sans-serif;
+      transition: var(--transicion);
+    }
+
+    .cart-clear-btn:hover {
+      border-color: #FF4757;
+      color: #FF4757;
+    }
+
+    /* ========== CONTACTO - REDISEÑO LUJOSO ========== */
+    .contact-hero {
+      background: linear-gradient(160deg, #0D2B3E 0%, #1A3A5C 40%, #2176AE 100%);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 40%, rgba(26, 191, 184, 0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 60%, rgba(91, 200, 245, 0.1) 0%, transparent 50%);
+      animation: rotateGlow 20s linear infinite;
+    }
+
+    @keyframes rotateGlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .contact-hero h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: #fff;
+      position: relative;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .contact-hero p {
+      color: rgba(255,255,255,0.8);
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+      line-height: 1.7;
+    }
+
+    .contact-hero .gold-line {
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #D4AF37, #F5E6A3, #D4AF37, transparent);
+      margin: 1.5rem auto 0;
+      border-radius: 3px;
+    }
+
+    .contact-section-lux {
+      background: var(--bg-section);
+      padding: 4rem 2rem;
+      transition: background 0.4s ease;
+    }
+
+    .contact-lux-grid {
+      max-width: 1100px;
+      margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3rem;
@@ -601,64 +1117,97 @@
     }
 
     @media (max-width: 768px) {
-      .contact-grid {
+      .contact-lux-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    .contact-form {
-      background: var(--blanco);
-      border-radius: 20px;
+    .lux-card {
+      background: var(--bg-card);
+      border-radius: 24px;
       padding: 2.5rem;
-      box-shadow: var(--sombra-suave);
-      border: 1.5px solid rgba(91, 200, 245, 0.25);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.4s;
     }
 
-    .form-group {
+    .lux-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #D4AF37, #F5E6A3, #D4AF37);
+    }
+
+    .lux-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+    }
+
+    .lux-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--azul);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .lux-card h3 .gold-icon {
+      color: #D4AF37;
+      font-size: 1.2rem;
+    }
+
+    .lux-form-group {
       margin-bottom: 1.2rem;
     }
 
-    .form-group label {
+    .lux-form-group label {
       display: block;
       font-weight: 700;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       color: var(--azul);
       margin-bottom: 6px;
       letter-spacing: 0.5px;
     }
 
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
+    .lux-form-group input,
+    .lux-form-group textarea,
+    .lux-form-group select {
       width: 100%;
       padding: 12px 16px;
-      border: 1.5px solid rgba(91, 200, 245, 0.4);
-      border-radius: 10px;
+      border: 1.5px solid rgba(212, 175, 55, 0.3);
+      border-radius: 12px;
       font-family: 'Nunito', sans-serif;
       font-size: 0.95rem;
-      color: var(--oscuro);
-      background: var(--gris-claro);
+      color: var(--text-primary);
+      background: var(--input-bg);
       outline: none;
-      transition: border-color 0.3s, box-shadow 0.3s;
+      transition: border-color 0.3s, box-shadow 0.3s, background 0.4s;
     }
 
-    .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: var(--turquesa);
-      box-shadow: 0 0 0 3px rgba(26, 191, 184, 0.15);
-      background: #fff;
+    .lux-form-group input:focus,
+    .lux-form-group textarea:focus {
+      border-color: #D4AF37;
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+      background: var(--bg-card);
     }
 
-    .form-group textarea {
+    .lux-form-group textarea {
       resize: vertical;
-      min-height: 120px;
+      min-height: 110px;
     }
 
-    .btn-submit {
+    .lux-submit {
       width: 100%;
-      padding: 14px;
-      background: var(--gradiente);
-      color: #fff;
+      padding: 15px;
+      background: linear-gradient(135deg, #D4AF37 0%, #F5E6A3 50%, #D4AF37 100%);
+      color: #0D2B3E;
       font-weight: 800;
       font-size: 1rem;
       letter-spacing: 1px;
@@ -666,97 +1215,89 @@
       border-radius: 12px;
       cursor: pointer;
       transition: var(--transicion);
-      box-shadow: 0 6px 20px rgba(33, 118, 174, 0.3);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+      font-family: 'Nunito', sans-serif;
     }
 
-    .btn-submit:hover {
+    .lux-submit:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(33, 118, 174, 0.4);
+      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.5);
     }
 
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .map-container {
-      border-radius: var(--radio);
-      overflow: hidden;
-      height: 260px;
-      box-shadow: var(--sombra-suave);
-      border: 2px solid rgba(91, 200, 245, 0.3);
-    }
-
-    .map-container iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .social-links {
-      display: flex;
-      flex-direction: column;
-      gap: 0.9rem;
-    }
-
-    .social-btn {
+    .lux-social-btn {
       display: flex;
       align-items: center;
       gap: 14px;
       padding: 14px 20px;
       border-radius: 14px;
       text-decoration: none;
-      font-weight: 800;
+      font-weight: 700;
       font-size: 0.95rem;
       transition: var(--transicion);
-      border: 2px solid transparent;
-      color: #fff;
+      border: 1.5px solid rgba(212, 175, 55, 0.3);
+      color: var(--text-primary);
+      background: var(--bg-card);
+      margin-bottom: 0.8rem;
     }
 
-    .social-btn svg {
-      width: 24px;
-      height: 24px;
+    .lux-social-btn svg {
+      width: 22px;
+      height: 22px;
       flex-shrink: 0;
-      fill: currentColor;
     }
 
-    .social-btn.ig {
+    .lux-social-btn.ig:hover {
       background: linear-gradient(135deg, #f9ce34, #ee2a7b, #6228d7);
-    }
-    .social-btn.ig:hover {
+      color: #fff;
+      border-color: transparent;
       transform: translateX(5px);
-      box-shadow: 0 8px 25px rgba(238, 42, 123, 0.4);
     }
-    .social-btn.fb {
+
+    .lux-social-btn.fb:hover {
       background: #1877F2;
-    }
-    .social-btn.fb:hover {
+      color: #fff;
+      border-color: transparent;
       transform: translateX(5px);
-      box-shadow: 0 8px 25px rgba(24, 119, 242, 0.4);
     }
-    .social-btn.wa {
+
+    .lux-social-btn.wa:hover {
       background: #25D366;
-    }
-    .social-btn.wa:hover {
+      color: #fff;
+      border-color: transparent;
       transform: translateX(5px);
-      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
     }
 
-    .address-box {
-      background: var(--gris-claro);
-      border-radius: 14px;
-      padding: 1.2rem 1.5rem;
-      border-left: 4px solid var(--turquesa);
+    .lux-address {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(26, 191, 184, 0.05));
+      border-radius: 16px;
+      padding: 1.5rem;
+      border-left: 4px solid #D4AF37;
+      margin-bottom: 1.5rem;
     }
 
-    .address-box p {
+    .lux-address p {
       font-size: 0.95rem;
-      color: #445;
-      line-height: 1.7;
+      color: var(--text-secondary);
+      line-height: 1.8;
     }
-    .address-box strong {
+
+    .lux-address strong {
       color: var(--azul);
+    }
+
+    .lux-map {
+      border-radius: 16px;
+      overflow: hidden;
+      height: 220px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      border: 2px solid rgba(212, 175, 55, 0.3);
+      margin-bottom: 1.5rem;
+    }
+
+    .lux-map iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
 
     /* ========== FOOTER ========== */
@@ -766,70 +1307,19 @@
       text-align: center;
       padding: 2rem;
       font-size: 0.88rem;
+      transition: background 0.4s ease;
+    }
+
+    [data-theme="dark"] footer {
+      background: #0A0A14;
+      color: rgba(255, 255, 255, 0.5);
     }
 
     footer strong {
       color: var(--celeste);
     }
 
-    /* ========== ANIMACIONES ========== */
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .fade-in {
-      animation: fadeUp 0.7s ease both;
-    }
-
-    /* ========== RESPONSIVE ========== */
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background: #fff;
-        border-bottom: 2px solid var(--celeste);
-        padding: 1rem 2rem;
-        gap: 1rem;
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .hamburger {
-        display: flex;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .gallery-strip {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .gallery-strip .gimg:nth-child(4),
-      .gallery-strip .gimg:nth-child(5) {
-        display: none;
-      }
-
-      .cat-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    /* ========== BOTÓN FLOTANTE WHATSAPP ========== */
+    /* ========== WHATSAPP FLOTANTE ========== */
     .whatsapp-float {
       position: fixed;
       bottom: 30px;
@@ -856,6 +1346,90 @@
       height: 32px;
       fill: #fff;
     }
+
+    /* ========== TOAST ========== */
+    .toast {
+      position: fixed;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #25D366;
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+      opacity: 0;
+      transition: all 0.4s ease;
+      z-index: 5000;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ========== ANIMACIONES ========== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      animation: fadeUp 0.7s ease both;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--nav-bg);
+        border-bottom: 2px solid var(--celeste);
+        padding: 1rem 2rem;
+        gap: 1rem;
+        backdrop-filter: blur(12px);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-strip {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .gallery-strip .gimg:nth-child(4),
+      .gallery-strip .gimg:nth-child(5) {
+        display: none;
+      }
+
+      .cat-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-right {
+        gap: 0.8rem;
+      }
+
+      .theme-toggle span:last-child {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -863,20 +1437,27 @@
   <!-- ==================== NAVEGACIÓN ==================== -->
   <nav>
     <div class="nav-logo">DiCa Magic<span>Sublimación & Diseño</span></div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#" onclick="showPage('inicio')" class="active" id="tab-inicio">Inicio</a></li>
-      <li><a href="#" onclick="showPage('catalogo')" id="tab-catalogo">Catálogo</a></li>
-      <li><a href="#" onclick="showPage('contacto')" id="tab-contacto">Contacto</a></li>
-    </ul>
-    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#" onclick="showPage('inicio')" class="active" id="tab-inicio">Inicio</a></li>
+        <li><a href="#" onclick="showPage('catalogo')" id="tab-catalogo">Catálogo</a></li>
+        <li><a href="#" onclick="showPage('contacto')" id="tab-contacto">Contacto</a></li>
+      </ul>
+      <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle" title="Cambiar tema">
+        <span id="themeIcon">🌙</span>
+        <span id="themeLabel">Oscuro</span>
+      </button>
+      <button class="cart-nav-btn" onclick="toggleCart()">
+        🛒 <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
     </div>
   </nav>
 
   <!-- ==================== PÁGINA INICIO ==================== -->
   <div class="page active" id="page-inicio">
-
-    <!-- HERO -->
     <div class="hero">
       <div class="hero-overlay"></div>
       <div class="hero-content">
@@ -887,7 +1468,6 @@
       </div>
     </div>
 
-    <!-- GALERÍA STRIP -->
     <div class="gallery-strip">
       <div class="gimg"><img src="taza.jpg" alt="Taza sublimada" /></div>
       <div class="gimg"><img src="REMERAS.png" alt="Remera personalizada" /></div>
@@ -896,7 +1476,6 @@
       <div class="gimg"><img src="piedra.jpg" alt="Productos sublimados" /></div>
     </div>
 
-    <!-- ABOUT -->
     <section class="section">
       <div class="section-inner">
         <div class="about-grid">
@@ -915,14 +1494,13 @@
       </div>
     </section>
 
-    <!-- SUBLIMACIÓN (tipos) -->
     <section class="section sub-section">
       <div class="section-inner">
         <p class="section-subtitle">Nuestra Técnica</p>
         <h2 class="section-title">¿Qué es la Sublimación?</h2>
         <div class="divider"></div>
-        <p style="max-width:750px; font-size:1.05rem; line-height:1.8; color:#445; margin-bottom:2.5rem;">
-          La <strong>sublimación</strong> es un proceso de impresión en el que la tinta se transforma de estado sólido a gaseoso —sin pasar por el estado líquido— mediante calor y presión. Esto permite que el diseño quede <strong>integrado en la superficie del objeto</strong>, logrando colores brillantes, resistentes al lavado, al rayado y al desgaste. El resultado es una imagen de altísima calidad que forma parte del material mismo.
+        <p style="max-width:750px; font-size:1.05rem; line-height:1.8; color:var(--text-secondary); margin-bottom:2.5rem;">
+          La <strong>sublimación</strong> es un proceso de impresión en el que la tinta se transforma de estado sólido a gaseoso —sin pasar por el estado líquido— mediante calor y presión. Esto permite que el diseño quede <strong>integrado en la superficie del objeto</strong>, logrando colores brillantes, resistentes al lavado, al rayado y al desgaste.
         </p>
 
         <h3 style="color:var(--azul); font-size:1.3rem; font-weight:800; margin-bottom:1.5rem;">Tipos de Sublimación que realizamos</h3>
@@ -969,10 +1547,9 @@
         <p class="section-subtitle">Nuestros Productos</p>
         <h2 class="section-title">Catálogo DiCa Magic</h2>
         <div class="divider"></div>
-        <p style="font-size:1rem; color:#556; margin-bottom:0.5rem;">Hacé clic en cada categoría para ver los productos y precios disponibles.</p>
+        <p style="font-size:1rem; color:var(--text-muted); margin-bottom:0.5rem;">Hacé clic en cada categoría para ver los productos, elegir opciones y agregar al carrito.</p>
 
         <div class="cat-grid">
-          <!-- TAZAS -->
           <div class="cat-card" onclick="openModal('tazas')">
             <img src="taza.jpg" alt="Tazas" />
             <span class="cat-badge">Popular</span>
@@ -983,7 +1560,6 @@
             <div class="cat-arrow">→</div>
           </div>
 
-          <!-- REMERAS -->
           <div class="cat-card" onclick="openModal('remeras')">
             <img src="REMERAS.png" alt="Remeras" />
             <div class="cat-card-body">
@@ -993,7 +1569,6 @@
             <div class="cat-arrow">→</div>
           </div>
 
-          <!-- CUADROS -->
           <div class="cat-card" onclick="openModal('cuadros')">
             <img src="cuadros.jpg" alt="Cuadros" />
             <span class="cat-badge">Nuevo</span>
@@ -1004,7 +1579,6 @@
             <div class="cat-arrow">→</div>
           </div>
 
-          <!-- ACCESORIOS -->
           <div class="cat-card" onclick="openModal('accesorios')">
             <img src="funda.png" alt="Accesorios" />
             <div class="cat-card-body">
@@ -1014,7 +1588,6 @@
             <div class="cat-arrow">→</div>
           </div>
 
-          <!-- TERMOS -->
           <div class="cat-card" onclick="openModal('termos')">
             <img src="termos.jpg" alt="Termos" />
             <span class="cat-badge">Nuevo</span>
@@ -1025,7 +1598,6 @@
             <div class="cat-arrow">→</div>
           </div>
 
-          <!-- HOPPIES -->
           <div class="cat-card" onclick="openModal('hoppies')">
             <img src="hoppies.jpg" alt="Hoppies" />
             <div class="cat-card-body">
@@ -1035,7 +1607,6 @@
             <div class="cat-arrow">→</div>
           </div>
 
-          <!-- CARPETAS CREATIVAS -->
           <div class="cat-card" onclick="openModal('carpetas')">
             <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&q=80" alt="Carpetas Creativas" />
             <div class="cat-card-body">
@@ -1045,7 +1616,6 @@
             <div class="cat-arrow">→</div>
           </div>
 
-          <!-- MAQUETAS / LIBROS -->
           <div class="cat-card" onclick="openModal('maquetas')">
             <img src="https://images.unsplash.com/photo-1512045482940-fc395521bb7f?w=600&q=80" alt="Maquetas y Libros" />
             <div class="cat-card-body">
@@ -1055,9 +1625,6 @@
             <div class="cat-arrow">→</div>
           </div>
 
-          <!-- ====== NUEVAS CATEGORÍAS AGREGADAS ====== -->
-
-          <!-- ALMOHADONES -->
           <div class="cat-card" onclick="openModal('almohadones')">
             <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=600&q=80" alt="Almohadones" />
             <span class="cat-badge">Nuevo</span>
@@ -1068,7 +1635,6 @@
             <div class="cat-arrow">→</div>
           </div>
 
-          <!-- BOLSOS & MOCHILAS -->
           <div class="cat-card" onclick="openModal('bolsos')">
             <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&q=80" alt="Bolsos y Mochilas" />
             <div class="cat-card-body">
@@ -1078,7 +1644,6 @@
             <div class="cat-arrow">→</div>
           </div>
 
-          <!-- JUEGOS DE MESA -->
           <div class="cat-card" onclick="openModal('juegos')">
             <img src="https://images.unsplash.com/photo-1553481187-3fc6cce0b6f1?w=600&q=80" alt="Juegos de Mesa" />
             <div class="cat-card-body">
@@ -1088,7 +1653,6 @@
             <div class="cat-arrow">→</div>
           </div>
 
-          <!-- ARTÍCULOS DE OFICINA -->
           <div class="cat-card" onclick="openModal('oficina')">
             <img src="mouse-pad.jpg" alt="Artículos de Oficina" />
             <div class="cat-card-body">
@@ -1102,93 +1666,93 @@
     </section>
   </div>
 
-  <!-- ==================== PÁGINA CONTACTO ==================== -->
+  <!-- ==================== PÁGINA CONTACTO (REDISEÑO LUJOSO) ==================== -->
   <div class="page" id="page-contacto">
-    <section class="section" style="min-height:100vh;">
-      <div class="section-inner">
-        <p class="section-subtitle">Hablemos</p>
-        <h2 class="section-title">Contactanos</h2>
-        <div class="divider"></div>
+    <div class="contact-hero">
+      <h2>Hablemos de tu próximo proyecto</h2>
+      <p>Estamos listos para transformar tus ideas en piezas únicas. Escribinos y te responderemos a la brevedad.</p>
+      <div class="gold-line"></div>
+    </div>
 
-        <div class="contact-grid">
-          <div class="contact-form fade-in">
-            <h3 style="color:var(--azul); font-size:1.2rem; margin-bottom:1.5rem; font-weight:800;">Envianos tu consulta</h3>
-            <form action="https://formspree.io/f/xykvweap" method="POST" id="contact-form">
-              <div class="form-group">
-                <label>Nombre completo</label>
-                <input type="text" name="nombre" placeholder="Tu nombre..." required />
-              </div>
-              <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" placeholder="tu@email.com" required />
-              </div>
-              <div class="form-group">
-                <label>Teléfono (opcional)</label>
-                <input type="tel" name="telefono" placeholder="+595 ..." />
-              </div>
-              <div class="form-group">
-                <label>Tipo de producto</label>
-                <select name="producto">
-                  <option value="">-- Seleccioná --</option>
-                  <option>Tazas / Choperas</option>
-                  <option>Remeras / Indumentaria</option>
-                  <option>Cuadros / Placas</option>
-                  <option>Accesorios / Regalos</option>
-                  <option>Termos</option>
-                  <option>Hoppies</option>
-                  <option>Carpetas Creativas</option>
-                  <option>Maquetas / Libros</option>
-                  <option>Almohadones</option>
-                  <option>Bolsos & Mochilas</option>
-                  <option>Juegos de Mesa</option>
-                  <option>Artículos de Oficina</option>
-                  <option>Impresiones</option>
-                  <option>Otro</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label>Mensaje</label>
-                <textarea name="mensaje" placeholder="Contanos qué necesitás, cantidad, diseño que tenés en mente..."></textarea>
-              </div>
-              <button type="submit" class="btn-submit">✦ Enviar Consulta</button>
-              <p id="form-message" style="margin-top:1rem; font-weight:700; color: var(--turquesa);"></p>
-            </form>
-          </div>
-
-          <div class="contact-info fade-in">
-            <div class="address-box">
-              <p><strong>📍 Dirección</strong><br />Villa Elisa, Paraguay<br /><em>Atendemos también por delivery y envíos.</em></p>
+    <div class="contact-section-lux">
+      <div class="contact-lux-grid">
+        <div class="lux-card fade-in">
+          <h3><span class="gold-icon">✦</span> Envianos tu consulta</h3>
+          <form action="https://formspree.io/f/xykvweap" method="POST" id="contact-form">
+            <div class="lux-form-group">
+              <label>Nombre completo</label>
+              <input type="text" name="nombre" placeholder="Tu nombre..." required />
             </div>
+            <div class="lux-form-group">
+              <label>Email</label>
+              <input type="email" name="email" placeholder="tu@email.com" required />
+            </div>
+            <div class="lux-form-group">
+              <label>Teléfono (opcional)</label>
+              <input type="tel" name="telefono" placeholder="+595 ..." />
+            </div>
+            <div class="lux-form-group">
+              <label>Tipo de producto</label>
+              <select name="producto">
+                <option value="">-- Seleccioná --</option>
+                <option>Tazas / Choperas</option>
+                <option>Remeras / Indumentaria</option>
+                <option>Cuadros / Placas</option>
+                <option>Accesorios / Regalos</option>
+                <option>Termos</option>
+                <option>Hoppies</option>
+                <option>Carpetas Creativas</option>
+                <option>Maquetas / Libros</option>
+                <option>Almohadones</option>
+                <option>Bolsos & Mochilas</option>
+                <option>Juegos de Mesa</option>
+                <option>Artículos de Oficina</option>
+                <option>Impresiones</option>
+                <option>Otro</option>
+              </select>
+            </div>
+            <div class="lux-form-group">
+              <label>Mensaje</label>
+              <textarea name="mensaje" placeholder="Contanos qué necesitás, cantidad, diseño que tenés en mente..."></textarea>
+            </div>
+            <button type="submit" class="lux-submit">✦ Enviar Consulta</button>
+            <p id="form-message" style="margin-top:1rem; font-weight:700; color: var(--turquesa);"></p>
+          </form>
+        </div>
 
-            <div class="map-container">
+        <div class="fade-in">
+          <div class="lux-card" style="margin-bottom:1.5rem;">
+            <h3><span class="gold-icon">📍</span> Información de contacto</h3>
+            <div class="lux-address">
+              <p><strong>Dirección</strong><br />Villa Elisa, Paraguay<br /><em>Atendemos también por delivery y envíos.</em></p>
+            </div>
+            <div class="lux-map">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.5!2d-57.574157!3d-25.387794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDIzJzE2LjEiUyA1N8KwMzQnMjYuOSJX!5e0!3m2!1ses!2spy!4v1700000000000"
                 allowfullscreen
                 loading="lazy"
               ></iframe>
             </div>
+          </div>
 
-            <div>
-              <h3 style="color:var(--azul); font-size:1rem; font-weight:800; margin-bottom:1rem; letter-spacing:1px; text-transform:uppercase;">Seguinos & Escribinos</h3>
-              <div class="social-links">
-                <a class="social-btn ig" href="https://www.instagram.com/dica.magic?igsh=a2RudHd3djVzcTA=" target="_blank">
-                  <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                  @dicamagic en Instagram
-                </a>
-                <a class="social-btn fb" href="https://www.facebook.com/share/18iMZ1uRti/" target="_blank">
-                  <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                  DiCa Magic en Facebook
-                </a>
-                <a class="social-btn wa" href="https://wa.me/595986545530" target="_blank">
-                  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                  Escribinos por WhatsApp
-                </a>
-              </div>
-            </div>
+          <div class="lux-card">
+            <h3><span class="gold-icon">✦</span> Seguinos & Escribinos</h3>
+            <a class="lux-social-btn ig" href="https://www.instagram.com/dica.magic?igsh=a2RudHd3djVzcTA=" target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              @dicamagic en Instagram
+            </a>
+            <a class="lux-social-btn fb" href="https://www.facebook.com/share/18iMZ1uRti/" target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              DiCa Magic en Facebook
+            </a>
+            <a class="lux-social-btn wa" href="https://wa.me/595986545530" target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Escribinos por WhatsApp
+            </a>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
 
   <!-- ==================== FOOTER ==================== -->
@@ -1198,13 +1762,43 @@
     <p style="margin-top:0.5rem;">¿Ya sos cliente? Preguntá por nuestro código de recompra <strong>GRACIAS10</strong></p>
   </footer>
 
-  <!-- ==================== MODAL ==================== -->
+  <!-- ==================== MODAL PRODUCTOS ==================== -->
   <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
     <div class="modal" id="modal-content">
       <button class="modal-close" onclick="closeModal()">✕</button>
       <div id="modal-body"></div>
     </div>
   </div>
+
+  <!-- ==================== CARRITO ==================== -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <div class="cart-panel" id="cartPanel">
+    <div class="cart-header">
+      <h2>🛒 Tu Carrito</h2>
+      <button onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">
+        <span>🛒</span>
+        <p>Tu carrito está vacío</p>
+        <p style="font-size:0.85rem; margin-top:0.5rem;">Agregá productos desde el catálogo</p>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cartTotal">0 Gs</span>
+      </div>
+      <button class="cart-whatsapp-btn" id="cartWhatsappBtn" onclick="sendCartWhatsapp()" disabled>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Enviar pedido por WhatsApp
+      </button>
+      <button class="cart-clear-btn" onclick="clearCart()">Vaciar carrito</button>
+    </div>
+  </div>
+
+  <!-- ==================== TOAST ==================== -->
+  <div class="toast" id="toast">✅ Producto agregado al carrito</div>
 
   <!-- ==================== WHATSAPP FLOTANTE ==================== -->
   <a href="https://wa.me/595986545530?text=Hola%20DiCa%20Magic!%20Quiero%20hacer%20un%20pedido"
@@ -1216,6 +1810,26 @@
 
   <!-- ==================== SCRIPTS ==================== -->
   <script>
+    // ===== TEMA =====
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      document.getElementById('themeIcon').textContent = next === 'dark' ? '☀️' : '🌙';
+      document.getElementById('themeLabel').textContent = next === 'dark' ? 'Claro' : 'Oscuro';
+      localStorage.setItem('dica-theme', next);
+    }
+
+    (function initTheme() {
+      const saved = localStorage.getItem('dica-theme');
+      if (saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.getElementById('themeIcon').textContent = '☀️';
+        document.getElementById('themeLabel').textContent = 'Claro';
+      }
+    })();
+
     // ===== NAVEGACIÓN =====
     function showPage(id) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -1230,174 +1844,341 @@
       document.getElementById('navLinks').classList.toggle('open');
     }
 
-    // ===== DATOS DEL CATÁLOGO (con nuevas categorías) =====
+    // ===== CARRITO =====
+    let cart = JSON.parse(localStorage.getItem('dica-cart')) || [];
+
+    function saveCart() {
+      localStorage.setItem('dica-cart', JSON.stringify(cart));
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const count = cart.reduce((sum, item) => sum + item.qty, 0);
+      document.getElementById('cartCount').textContent = count;
+      const total = cart.reduce((sum, item) => sum + item.priceNum * item.qty, 0);
+      document.getElementById('cartTotal').textContent = total.toLocaleString('es-PY') + ' Gs';
+      document.getElementById('cartWhatsappBtn').disabled = cart.length === 0;
+
+      const container = document.getElementById('cartItems');
+      if (cart.length === 0) {
+        container.innerHTML = `<div class="cart-empty">
+          <span>🛒</span>
+          <p>Tu carrito está vacío</p>
+          <p style="font-size:0.85rem; margin-top:0.5rem;">Agregá productos desde el catálogo</p>
+        </div>`;
+        return;
+      }
+
+      container.innerHTML = cart.map((item, index) => `
+        <div class="cart-item">
+          <img src="${item.img}" alt="${item.name}" />
+          <div class="cart-item-info">
+            <h4>${item.name}</h4>
+            ${item.variant ? `<div class="item-variant">${item.variant}</div>` : ''}
+            <div class="item-price">${item.price} c/u</div>
+            <div class="cart-item-actions">
+              <button onclick="changeQty(${index}, -1)">−</button>
+              <span>${item.qty}</span>
+              <button onclick="changeQty(${index}, 1)">+</button>
+              <button class="cart-item-remove" onclick="removeItem(${index})" title="Eliminar">🗑</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function addToCart(product, variant) {
+      const key = product.name + (variant || '');
+      const existing = cart.find(item => item.key === key);
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({
+          key,
+          name: product.name,
+          price: product.price,
+          priceNum: product.priceNum,
+          img: product.img,
+          variant: variant || '',
+          qty: 1
+        });
+      }
+      saveCart();
+      showToast('✅ ' + product.name + ' agregado al carrito');
+    }
+
+    function changeQty(index, delta) {
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) cart.splice(index, 1);
+      saveCart();
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      saveCart();
+    }
+
+    function clearCart() {
+      if (cart.length === 0) return;
+      if (confirm('¿Estás seguro de vaciar el carrito?')) {
+        cart = [];
+        saveCart();
+      }
+    }
+
+    function toggleCart() {
+      document.getElementById('cartPanel').classList.toggle('open');
+      document.getElementById('cartOverlay').classList.toggle('open');
+    }
+
+    function sendCartWhatsapp() {
+      if (cart.length === 0) return;
+      const phone = '595986545530';
+      let msg = 'Hola DiCa Magic! 🛒 Quiero hacer el siguiente pedido:\n\n';
+      let total = 0;
+      cart.forEach(item => {
+        const subtotal = item.priceNum * item.qty;
+        total += subtotal;
+        msg += `• ${item.name}`;
+        if (item.variant) msg += ` (${item.variant})`;
+        msg += ` x${item.qty} — ${subtotal.toLocaleString('es-PY')} Gs\n`;
+      });
+      msg += `\n━━━━━━━━━━━━━━━━\n💰 *Total: ${total.toLocaleString('es-PY')} Gs*\n\n¿Me confirman disponibilidad y forma de pago? ¡Gracias!`;
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    function showToast(text) {
+      const toast = document.getElementById('toast');
+      toast.textContent = text;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    // ===== DATOS DEL CATÁLOGO =====
     const catalogData = {
-      // --- Categorías existentes ---
       tazas: {
         title: 'Tazas & Choperas',
         sub: 'Personalizadas a 360°',
         products: [
-          { img: 'clasica.png', name: 'Taza Clásica 300ml', price: '25.000 Gs', desc: 'Cerámica blanca, diseño completo' },
-          { img: 'magica.png', name: 'Taza Mágica', price: '32.000 Gs', desc: 'Cambia de color con el calor' },
-          { img: 'dorada.png', name: 'Taza Dorada', price: '38.000 Gs', desc: 'Gran tamaño, impacto visual' },
-          { img: 'chopera.jpg', name: 'Chopera 400ml', price: '45.000 Gs', desc: 'Vidrio con asa, colores vivos' },
-          { img: 'corazon.jpg', name: 'Taza Corazón', price: '30.000 Gs', desc: 'Forma especial, regalo ideal' },
-          { img: 'doble.jpg', name: 'Set x 2 Tazas', price: '45.000 Gs', desc: 'Par personalizado a tu gusto' }
+          { img: 'clasica.png', name: 'Taza Clásica 300ml', price: '25.000 Gs', priceNum: 25000, desc: 'Cerámica blanca, diseño completo', options: { colors: ['Blanco', 'Negro', 'Rojo', 'Azul', 'Verde', 'Rosa'], type: 'taza' } },
+          { img: 'magica.png', name: 'Taza Mágica', price: '32.000 Gs', priceNum: 32000, desc: 'Cambia de color con el calor', options: { colors: ['Negro mágico', 'Azul mágico', 'Rosa mágico'], type: 'taza' } },
+          { img: 'dorada.png', name: 'Taza Dorada', price: '38.000 Gs', priceNum: 38000, desc: 'Gran tamaño, impacto visual', options: { colors: ['Dorado', 'Plateado', 'Blanco perlado'], type: 'taza' } },
+          { img: 'chopera.jpg', name: 'Chopera 400ml', price: '45.000 Gs', priceNum: 45000, desc: 'Vidrio con asa, colores vivos', options: { colors: ['Transparente', 'Ámbar', 'Azul'], type: 'taza' } },
+          { img: 'corazon.jpg', name: 'Taza Corazón', price: '30.000 Gs', priceNum: 30000, desc: 'Forma especial, regalo ideal', options: { colors: ['Rojo', 'Rosa', 'Blanco'], type: 'taza' } },
+          { img: 'doble.jpg', name: 'Set x 2 Tazas', price: '45.000 Gs', priceNum: 45000, desc: 'Par personalizado a tu gusto', options: { colors: ['Blanco', 'Negro', 'Rojo', 'Azul'], type: 'taza' } }
         ]
       },
       remeras: {
         title: 'Remeras & Indumentaria',
         sub: 'Telas de poliéster de primera calidad',
         products: [
-          { img: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400&q=80', name: 'Remera Unisex', price: '60.000 Gs', desc: 'S, M, L, XL — varios colores' },
-          { img: 'https://images.unsplash.com/photo-1562157873-818bc0726f68?w=400&q=80', name: 'Buso Canguro', price: '95.000 Gs', desc: 'Abrigado y personalizado' },
-          { img: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&q=80', name: 'Remera Niños', price: '45.000 Gs', desc: 'Talle 2 al 16, colores vivos' },
-          { img: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&q=80', name: 'Camiseta Deportiva', price: '70.000 Gs', desc: 'Dry-fit, sublimación total' },
-          { img: 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=400&q=80', name: 'Remera Premium', price: '80.000 Gs', desc: 'Calidad exportación' },
-          { img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80', name: 'Conjunto Deportivo', price: '130.000 Gs', desc: 'Remera + short a juego' }
+          { img: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400&q=80', name: 'Remera Unisex', price: '60.000 Gs', priceNum: 60000, desc: 'S, M, L, XL — varios colores', options: { sizes: ['S', 'M', 'L', 'XL', 'XXL'], colors: ['Blanco', 'Negro', 'Azul', 'Rojo', 'Verde'], type: 'remera' } },
+          { img: 'https://images.unsplash.com/photo-1562157873-818bc0726f68?w=400&q=80', name: 'Buso Canguro', price: '95.000 Gs', priceNum: 95000, desc: 'Abrigado y personalizado', options: { sizes: ['S', 'M', 'L', 'XL', 'XXL'], colors: ['Negro', 'Gris', 'Azul marino', 'Rojo'], type: 'remera' } },
+          { img: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&q=80', name: 'Remera Niños', price: '45.000 Gs', priceNum: 45000, desc: 'Talle 2 al 16, colores vivos', options: { sizes: ['2', '4', '6', '8', '10', '12', '14', '16'], colors: ['Blanco', 'Azul', 'Rojo', 'Amarillo', 'Rosa'], type: 'remera' } },
+          { img: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&q=80', name: 'Camiseta Deportiva', price: '70.000 Gs', priceNum: 70000, desc: 'Dry-fit, sublimación total', options: { sizes: ['S', 'M', 'L', 'XL'], colors: ['Blanco', 'Negro', 'Azul', 'Verde neón'], type: 'remera' } },
+          { img: 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=400&q=80', name: 'Remera Premium', price: '80.000 Gs', priceNum: 80000, desc: 'Calidad exportación', options: { sizes: ['S', 'M', 'L', 'XL', 'XXL'], colors: ['Blanco', 'Negro', 'Gris', 'Azul'], type: 'remera' } },
+          { img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80', name: 'Conjunto Deportivo', price: '130.000 Gs', priceNum: 130000, desc: 'Remera + short a juego', options: { sizes: ['S', 'M', 'L', 'XL'], colors: ['Negro', 'Azul', 'Rojo'], type: 'remera' } }
         ]
       },
       cuadros: {
         title: 'Cuadros & Placas',
         sub: 'Decoración de alta resolución',
         products: [
-          { img: 'cpiedra.jpg', name: 'Cuadro de Piedra', price: '45.000 Gs', desc: 'Acabado brillante o mate' },
-          { img: 'cuadro1.jpg', name: 'Cuadro Personalizado 20x30', price: '85.000 Gs', desc: 'Alta definición, muy resistente' },
-          { img: 'lamina.jpg', name: 'Lamina Personalizada A4', price: '55.000 Gs', desc: 'Ideal para homenajes y eventos' },
-          { img: 'lamina.jpg', name: 'Lamina Personalizada A4', price: '70.000 Gs', desc: 'Fotos propias o diseño DiCa' },
-          { img: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80', name: 'Tríptico 3 piezas', price: '110.000 Gs', desc: 'Juego decorativo coordinado' },
-          { img: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400&q=80', name: 'Cuadro Panorámico', price: '95.000 Gs', desc: '60x20cm, impacto total' }
+          { img: 'cpiedra.jpg', name: 'Cuadro de Piedra', price: '45.000 Gs', priceNum: 45000, desc: 'Acabado brillante o mate' },
+          { img: 'cuadro1.jpg', name: 'Cuadro Personalizado 20x30', price: '85.000 Gs', priceNum: 85000, desc: 'Alta definición, muy resistente' },
+          { img: 'lamina.jpg', name: 'Lamina Personalizada A4', price: '55.000 Gs', priceNum: 55000, desc: 'Ideal para homenajes y eventos' },
+          { img: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80', name: 'Tríptico 3 piezas', price: '110.000 Gs', priceNum: 110000, desc: 'Juego decorativo coordinado' },
+          { img: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400&q=80', name: 'Cuadro Panorámico', price: '95.000 Gs', priceNum: 95000, desc: '60x20cm, impacto total' }
         ]
       },
       accesorios: {
         title: 'Accesorios & Regalos',
         sub: 'Detalles únicos para cada ocasión',
         products: [
-          { img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&q=80', name: 'Llavero Sublimado', price: '15.000 Gs', desc: 'Acrílico o MDF, doble faz' },
-          { img: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=400&q=80', name: 'Funda Celular', price: '35.000 Gs', desc: 'Todos los modelos disponibles' },
-          { img: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400&q=80', name: 'Almohadón 40x40', price: '65.000 Gs', desc: 'Con relleno incluido' },
-          { img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80', name: 'Puzzle 30 piezas', price: '55.000 Gs', desc: 'Tu foto en puzzle' },
-          { img: 'https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=400&q=80', name: 'Botella Térmica', price: '75.000 Gs', desc: '500ml, acero inoxidable' },
-          { img: 'https://images.unsplash.com/photo-1564419320461-6870880221ad?w=400&q=80', name: 'Piedra Decorativa', price: '40.000 Gs', desc: 'Natural o artificial, única' }
+          { img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&q=80', name: 'Llavero Sublimado', price: '15.000 Gs', priceNum: 15000, desc: 'Acrílico o MDF, doble faz' },
+          { img: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=400&q=80', name: 'Funda Celular', price: '35.000 Gs', priceNum: 35000, desc: 'Todos los modelos disponibles' },
+          { img: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400&q=80', name: 'Almohadón 40x40', price: '65.000 Gs', priceNum: 65000, desc: 'Con relleno incluido' },
+          { img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80', name: 'Puzzle 30 piezas', price: '55.000 Gs', priceNum: 55000, desc: 'Tu foto en puzzle' },
+          { img: 'https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=400&q=80', name: 'Botella Térmica', price: '75.000 Gs', priceNum: 75000, desc: '500ml, acero inoxidable' },
+          { img: 'https://images.unsplash.com/photo-1564419320461-6870880221ad?w=400&q=80', name: 'Piedra Decorativa', price: '40.000 Gs', priceNum: 40000, desc: 'Natural o artificial, única' }
         ]
       },
       termos: {
         title: 'Termos Personalizados',
         sub: 'Térmicos, botellas y mates',
         products: [
-          { img: 'https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=400&q=80', name: 'Termo de Acero 500ml', price: '85.000 Gs', desc: 'Doble pared, mantiene temperatura' },
-          { img: 'https://images.unsplash.com/photo-1575550959106-5a7defe28b56?w=400&q=80', name: 'Termo Stanley 1L', price: '120.000 Gs', desc: 'Personalizado con vinilo o sublimación directa' },
-          { img: 'https://images.unsplash.com/photo-1590439477864-1f95488c2e4a?w=400&q=80', name: 'Botella Deportiva 750ml', price: '70.000 Gs', desc: 'Ligera, ideal para el gym' },
-          { img: 'https://imahttps://images.unsplash.com/photo-1532372320572-cda25653a26d?w=400&q=80ges.unsplash.com/photo-1589365278144-c9e705fbcba4?w=400&q=80', name: 'Mate Acero Personalizado', price: '65.000 Gs', desc: 'Virola sublimable, con bombilla' },
-          { img: 'https://images.unsplash.com/photo-1577937927134-99e1f1e3e0a1?w=400&q=80', name: 'Termo Color 350ml', price: '45.000 Gs', desc: 'Cerámico, ideal para escritorio' },
-          { img: 'https://images.unsplash.com/photo-1585435421593-8751a7f3e57d?w=400&q=80', name: 'Set Matero (termo + mate)', price: '135.000 Gs', desc: 'Combo personalizado a elección' }
+          { img: 'https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=400&q=80', name: 'Termo de Acero 500ml', price: '85.000 Gs', priceNum: 85000, desc: 'Doble pared, mantiene temperatura' },
+          { img: 'https://images.unsplash.com/photo-1575550959106-5a7defe28b56?w=400&q=80', name: 'Termo Stanley 1L', price: '120.000 Gs', priceNum: 120000, desc: 'Personalizado con vinilo o sublimación' },
+          { img: 'https://images.unsplash.com/photo-1590439477864-1f95488c2e4a?w=400&q=80', name: 'Botella Deportiva 750ml', price: '70.000 Gs', priceNum: 70000, desc: 'Ligera, ideal para el gym' },
+          { img: 'https://images.unsplash.com/photo-1532372320572-cda25653a26d?w=400&q=80', name: 'Mate Acero Personalizado', price: '65.000 Gs', priceNum: 65000, desc: 'Virola sublimable, con bombilla' },
+          { img: 'https://images.unsplash.com/photo-1577937927134-99e1f1e3e0a1?w=400&q=80', name: 'Termo Color 350ml', price: '45.000 Gs', priceNum: 45000, desc: 'Cerámico, ideal para escritorio' },
+          { img: 'https://images.unsplash.com/photo-1585435421593-8751a7f3e57d?w=400&q=80', name: 'Set Matero (termo + mate)', price: '135.000 Gs', priceNum: 135000, desc: 'Combo personalizado a elección' }
         ]
       },
       hoppies: {
         title: 'Hoppies Creativos',
         sub: 'Kits y artículos para hobbies',
         products: [
-          { img: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400&q=80', name: 'Kit de Pintura en Tela', price: '50.000 Gs', desc: 'Incluye bastidor y pinturas acrílicas' },
-          { img: 'https://images.unsplash.com/photo-1596464716127-2e0ccbb7b4f6?w=400&q=80', name: 'Set de Bordado Creativo', price: '65.000 Gs', desc: 'Hilos de colores, bastidor de madera' },
-          { img: 'https://images.unsplash.com/photo-1587049352851-8d4e89183900?w=400&q=80', name: 'Puzzle 500 piezas', price: '70.000 Gs', desc: 'Con imagen personalizada (sublimado)' },
-          { img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80', name: 'Almohadón Hobby 30x30', price: '45.000 Gs', desc: 'Funda sublimada con diseño de hobby' },
-          { img: 'https://images.unsplash.com/photo-1564419320461-6870880221ad?w=400&q=80', name: 'Piedra Decorativa DIY', price: '30.000 Gs', desc: 'Piedra natural con diseño personalizado' },
-          { img: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=400&q=80', name: 'Set de Acuarelas Personalizadas', price: '55.000 Gs', desc: 'Estuche sublimado con acuarelas profesionales' }
+          { img: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400&q=80', name: 'Kit de Pintura en Tela', price: '50.000 Gs', priceNum: 50000, desc: 'Incluye bastidor y pinturas acrílicas' },
+          { img: 'https://images.unsplash.com/photo-1596464716127-2e0ccbb7b4f6?w=400&q=80', name: 'Set de Bordado Creativo', price: '65.000 Gs', priceNum: 65000, desc: 'Hilos de colores, bastidor de madera' },
+          { img: 'https://images.unsplash.com/photo-1587049352851-8d4e89183900?w=400&q=80', name: 'Puzzle 500 piezas', price: '70.000 Gs', priceNum: 70000, desc: 'Con imagen personalizada' },
+          { img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80', name: 'Almohadón Hobby 30x30', price: '45.000 Gs', priceNum: 45000, desc: 'Funda sublimada con diseño de hobby' },
+          { img: 'https://images.unsplash.com/photo-1564419320461-6870880221ad?w=400&q=80', name: 'Piedra Decorativa DIY', price: '30.000 Gs', priceNum: 30000, desc: 'Piedra natural con diseño personalizado' },
+          { img: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=400&q=80', name: 'Set de Acuarelas Personalizadas', price: '55.000 Gs', priceNum: 55000, desc: 'Estuche sublimado con acuarelas profesionales' }
         ]
       },
       carpetas: {
         title: 'Carpetas Creativas',
         sub: 'Agendas, cuadernos y organizadores',
         products: [
-          { img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&q=80', name: 'Agenda Ejecutiva A5', price: '55.000 Gs', desc: 'Tapa dura sublimada, 200 páginas' },
-          { img: 'https://images.unsplash.com/photo-1506808704730-262f6b3a1a1f?w=400&q=80', name: 'Cuaderno Anillado 100 hojas', price: '40.000 Gs', desc: 'Tapa blanda personalizada' },
-          { img: 'https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=400&q=80', name: 'Carpeta A4 con Separadores', price: '60.000 Gs', desc: 'Diseño interior y exterior sublimado' },
-          { img: 'https://images.unsplash.com/photo-1586281380349-6320c5f11102?w=400&q=80', name: 'Portafolio Creativo A3', price: '75.000 Gs', desc: 'Ideal para artistas y arquitectos' },
-          { img: 'https://images.unsplash.com/photo-1607749111659-e6b2f5c3b26f?w=400&q=80', name: 'Libreta de Notas Bolsillo', price: '25.000 Gs', desc: 'Forro de tela sublimada' },
-          { img: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=400&q=80', name: 'Organizador Semanal Magnético', price: '48.000 Gs', desc: 'Pizarra imantada con diseño' }
+          { img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&q=80', name: 'Agenda Ejecutiva A5', price: '55.000 Gs', priceNum: 55000, desc: 'Tapa dura sublimada, 200 páginas' },
+          { img: 'https://images.unsplash.com/photo-1506808704730-262f6b3a1a1f?w=400&q=80', name: 'Cuaderno Anillado 100 hojas', price: '40.000 Gs', priceNum: 40000, desc: 'Tapa blanda personalizada' },
+          { img: 'https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=400&q=80', name: 'Carpeta A4 con Separadores', price: '60.000 Gs', priceNum: 60000, desc: 'Diseño interior y exterior sublimado' },
+          { img: 'https://images.unsplash.com/photo-1586281380349-6320c5f11102?w=400&q=80', name: 'Portafolio Creativo A3', price: '75.000 Gs', priceNum: 75000, desc: 'Ideal para artistas y arquitectos' },
+          { img: 'https://images.unsplash.com/photo-1607749111659-e6b2f5c3b26f?w=400&q=80', name: 'Libreta de Notas Bolsillo', price: '25.000 Gs', priceNum: 25000, desc: 'Forro de tela sublimada' },
+          { img: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=400&q=80', name: 'Organizador Semanal Magnético', price: '48.000 Gs', priceNum: 48000, desc: 'Pizarra imantada con diseño' }
         ]
       },
       maquetas: {
         title: 'Maquetas / Libros Personalizados',
         sub: 'Álbumes, modelos y libros de fotos',
         products: [
-          { img: 'https://images.unsplash.com/photo-1512045482940-fc395521bb7f?w=400&q=80', name: 'Álbum de Fotos 20x20', price: '90.000 Gs', desc: 'Tapa dura sublimada, 20 hojas' },
-          { img: 'https://images.unsplash.com/photo-1576872381149-7847515ce5d8?w=400&q=80', name: 'Libro de Recuerdos A4', price: '110.000 Gs', desc: 'Personalizado con textos y fotos' },
-          { img: 'https://images.unsplash.com/photo-1550399504-8953e5a5e8b2?w=400&q=80', name: 'Maqueta de Casa (escala)', price: '250.000 Gs', desc: 'Maqueta personalizada, diseño arquitectónico' },
-          { img: 'https://images.unsplash.com/photo-1620803042293-7c4cf60ab6f6?w=400&q=80', name: 'Maqueta de Avión a Escala', price: '180.000 Gs', desc: 'Réplica detallada, pintada a mano' },
-          { img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&q=80', name: 'Set de Maquetas para Armar', price: '65.000 Gs', desc: 'Madera balsa, ideal para niños' },
-          { img: 'https://images.unsplash.com/photo-1531072901881-d644216d4b1a?w=400&q=80', name: 'Libro de Firmas para Eventos', price: '75.000 Gs', desc: 'Sublimado en tapa, hojas de calidad' }
+          { img: 'https://images.unsplash.com/photo-1512045482940-fc395521bb7f?w=400&q=80', name: 'Álbum de Fotos 20x20', price: '90.000 Gs', priceNum: 90000, desc: 'Tapa dura sublimada, 20 hojas' },
+          { img: 'https://images.unsplash.com/photo-1576872381149-7847515ce5d8?w=400&q=80', name: 'Libro de Recuerdos A4', price: '110.000 Gs', priceNum: 110000, desc: 'Personalizado con textos y fotos' },
+          { img: 'https://images.unsplash.com/photo-1550399504-8953e5a5e8b2?w=400&q=80', name: 'Maqueta de Casa (escala)', price: '250.000 Gs', priceNum: 250000, desc: 'Maqueta personalizada, diseño arquitectónico' },
+          { img: 'https://images.unsplash.com/photo-1620803042293-7c4cf60ab6f6?w=400&q=80', name: 'Maqueta de Avión a Escala', price: '180.000 Gs', priceNum: 180000, desc: 'Réplica detallada, pintada a mano' },
+          { img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&q=80', name: 'Set de Maquetas para Armar', price: '65.000 Gs', priceNum: 65000, desc: 'Madera balsa, ideal para niños' },
+          { img: 'https://images.unsplash.com/photo-1531072901881-d644216d4b1a?w=400&q=80', name: 'Libro de Firmas para Eventos', price: '75.000 Gs', priceNum: 75000, desc: 'Sublimado en tapa, hojas de calidad' }
         ]
       },
-
-      // ===== NUEVAS CATEGORÍAS =====
       almohadones: {
         title: 'Almohadones Personalizados',
         sub: 'Comodidad y diseño para tu hogar',
         products: [
-          { img: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400&q=80', name: 'Almohadón Estándar 40x40', price: '55.000 Gs', desc: 'Funda sublimada, relleno incluido' },
-          { img: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=400&q=80', name: 'Almohadón Cuadrado 50x50', price: '70.000 Gs', desc: 'Tamaño extra, ideal para sillones' },
-          { img: 'https://images.unsplash.com/photo-1575452931841-2f9b9e0b5f10?w=400&q=80', name: 'Almohadón Cilíndrico', price: '65.000 Gs', desc: 'Forma de rulo, decorativo' },
-          { img: 'https://images.unsplash.com/photo-1536782376847-5c9d14d97d9f?w=400&q=80', name: 'Almohadón Infantil 30x30', price: '40.000 Gs', desc: 'Diseños divertidos para niños' },
-          { img: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&q=80', name: 'Set de 2 Almohadones', price: '100.000 Gs', desc: 'Par coordinado para tu living' },
-          { img: 'https://images.unsplash.com/photo-1564419320461-6870880221ad?w=400&q=80', name: 'Almohadón con Frase', price: '60.000 Gs', desc: 'Texto personalizado a elección' }
+          { img: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400&q=80', name: 'Almohadón Estándar 40x40', price: '55.000 Gs', priceNum: 55000, desc: 'Funda sublimada, relleno incluido' },
+          { img: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=400&q=80', name: 'Almohadón Cuadrado 50x50', price: '70.000 Gs', priceNum: 70000, desc: 'Tamaño extra, ideal para sillones' },
+          { img: 'https://images.unsplash.com/photo-1575452931841-2f9b9e0b5f10?w=400&q=80', name: 'Almohadón Cilíndrico', price: '65.000 Gs', priceNum: 65000, desc: 'Forma de rulo, decorativo' },
+          { img: 'https://images.unsplash.com/photo-1536782376847-5c9d14d97d9f?w=400&q=80', name: 'Almohadón Infantil 30x30', price: '40.000 Gs', priceNum: 40000, desc: 'Diseños divertidos para niños' },
+          { img: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&q=80', name: 'Set de 2 Almohadones', price: '100.000 Gs', priceNum: 100000, desc: 'Par coordinado para tu living' },
+          { img: 'https://images.unsplash.com/photo-1564419320461-6870880221ad?w=400&q=80', name: 'Almohadón con Frase', price: '60.000 Gs', priceNum: 60000, desc: 'Texto personalizado a elección' }
         ]
       },
       bolsos: {
         title: 'Bolsos & Mochilas',
         sub: 'Estilo y funcionalidad sublimada',
         products: [
-          { img: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=400&q=80', name: 'Bolso Tote Mediano', price: '80.000 Gs', desc: 'Algodón, estampado en ambos lados' },
-          { img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80', name: 'Mochila Escolar', price: '95.000 Gs', desc: 'Con cierre, varios compartimentos' },
-          { img: 'https://images.unsplash.com/photo-1547941126-3d5322b2186a?w=400&q=80', name: 'Bolso Deportivo', price: '110.000 Gs', desc: 'Impermeable, sublimación completa' },
-          { img: 'https://images.unsplash.com/photo-1581600140682-d4e77c4c4a6b?w=400&q=80', name: 'Morral Ecológico', price: '65.000 Gs', desc: 'Tela reciclada, diseño exclusivo' },
-          { img: 'https://images.unsplash.com/photo-1564533722853-2e320abf6f3b?w=400&q=80', name: 'Neceser de Viaje', price: '50.000 Gs', desc: 'Pequeño, ideal para accesorios' },
-          { img: 'https://images.unsplash.com/photo-1523779105320-d1cd346ff6b2?w=400&q=80', name: 'Bolso Bandolera', price: '75.000 Gs', desc: 'Ajustable, con diseño moderno' }
+          { img: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=400&q=80', name: 'Bolso Tote Mediano', price: '80.000 Gs', priceNum: 80000, desc: 'Algodón, estampado en ambos lados' },
+          { img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80', name: 'Mochila Escolar', price: '95.000 Gs', priceNum: 95000, desc: 'Con cierre, varios compartimentos' },
+          { img: 'https://images.unsplash.com/photo-1547941126-3d5322b2186a?w=400&q=80', name: 'Bolso Deportivo', price: '110.000 Gs', priceNum: 110000, desc: 'Impermeable, sublimación completa' },
+          { img: 'https://images.unsplash.com/photo-1581600140682-d4e77c4c4a6b?w=400&q=80', name: 'Morral Ecológico', price: '65.000 Gs', priceNum: 65000, desc: 'Tela reciclada, diseño exclusivo' },
+          { img: 'https://images.unsplash.com/photo-1564533722853-2e320abf6f3b?w=400&q=80', name: 'Neceser de Viaje', price: '50.000 Gs', priceNum: 50000, desc: 'Pequeño, ideal para accesorios' },
+          { img: 'https://images.unsplash.com/photo-1523779105320-d1cd346ff6b2?w=400&q=80', name: 'Bolso Bandolera', price: '75.000 Gs', priceNum: 75000, desc: 'Ajustable, con diseño moderno' }
         ]
       },
       juegos: {
         title: 'Juegos de Mesa',
         sub: 'Diversión con diseño personalizado',
         products: [
-          { img: 'https://images.unsplash.com/photo-1553481187-3fc6cce0b6f1?w=400&q=80', name: 'Puzzle 1000 piezas', price: '85.000 Gs', desc: 'Tu foto en puzzle de alta calidad' },
-          { img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80', name: 'Puzzle 500 piezas', price: '65.000 Gs', desc: 'Tamaño intermedio, diseño a elección' },
-          { img: 'https://images.unsplash.com/photo-1575550959106-5a7defe28b56?w=400&q=80', name: 'Juego de Memoria (24 fichas)', price: '40.000 Gs', desc: 'Fichas sublimadas con imágenes' },
-          { img: 'https://images.unsplash.com/photo-1590439477864-1f95488c2e4a?w=400&q=80', name: 'Dominó Personalizado', price: '55.000 Gs', desc: 'Fichas con diseño exclusivo' },
-          { img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80', name: 'Set de Lotería', price: '70.000 Gs', desc: 'Tablas y cartas sublimadas' },
-          { img: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400&q=80', name: 'Juego de Damas / Ajedrez', price: '90.000 Gs', desc: 'Tablero y piezas personalizadas' }
+          { img: 'https://images.unsplash.com/photo-1553481187-3fc6cce0b6f1?w=400&q=80', name: 'Puzzle 1000 piezas', price: '85.000 Gs', priceNum: 85000, desc: 'Tu foto en puzzle de alta calidad' },
+          { img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80', name: 'Puzzle 500 piezas', price: '65.000 Gs', priceNum: 65000, desc: 'Tamaño intermedio, diseño a elección' },
+          { img: 'https://images.unsplash.com/photo-1575550959106-5a7defe28b56?w=400&q=80', name: 'Juego de Memoria (24 fichas)', price: '40.000 Gs', priceNum: 40000, desc: 'Fichas sublimadas con imágenes' },
+          { img: 'https://images.unsplash.com/photo-1590439477864-1f95488c2e4a?w=400&q=80', name: 'Dominó Personalizado', price: '55.000 Gs', priceNum: 55000, desc: 'Fichas con diseño exclusivo' },
+          { img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80', name: 'Set de Lotería', price: '70.000 Gs', priceNum: 70000, desc: 'Tablas y cartas sublimadas' },
+          { img: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400&q=80', name: 'Juego de Damas / Ajedrez', price: '90.000 Gs', priceNum: 90000, desc: 'Tablero y piezas personalizadas' }
         ]
       },
       oficina: {
         title: 'Artículos de Oficina',
         sub: 'Organización con estilo',
         products: [
-          { img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=80', name: 'Porta Lapiceros Sublimado', price: '35.000 Gs', desc: 'Cerámico o MDF, con diseño' },
-          { img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&q=80', name: 'Organizador de Escritorio', price: '60.000 Gs', desc: 'Varios compartimentos, sublimado' },
-          { img: 'https://images.unsplash.com/photo-1506808704730-262f6b3a1a1f?w=400&q=80', name: 'Calendario de Pared', price: '45.000 Gs', desc: 'Con fotos personalizadas' },
-          { img: 'https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=400&q=80', name: 'Set de Posavasos (6 uds)', price: '50.000 Gs', desc: 'Corcho o cerámica, diseño único' },
-          { img: 'https://images.unsplash.com/photo-1586281380349-6320c5f11102?w=400&q=80', name: 'Porta Documentos', price: '70.000 Gs', desc: 'Cartón reforzado, sublimado' },
-          { img: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=400&q=80', name: 'Pizarra Imantada 30x40', price: '55.000 Gs', desc: 'Con marco y diseño personalizado' }
+          { img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=80', name: 'Porta Lapiceros Sublimado', price: '35.000 Gs', priceNum: 35000, desc: 'Cerámico o MDF, con diseño' },
+          { img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&q=80', name: 'Organizador de Escritorio', price: '60.000 Gs', priceNum: 60000, desc: 'Varios compartimentos, sublimado' },
+          { img: 'https://images.unsplash.com/photo-1506808704730-262f6b3a1a1f?w=400&q=80', name: 'Calendario de Pared', price: '45.000 Gs', priceNum: 45000, desc: 'Con fotos personalizadas' },
+          { img: 'https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=400&q=80', name: 'Set de Posavasos (6 uds)', price: '50.000 Gs', priceNum: 50000, desc: 'Corcho o cerámica, diseño único' },
+          { img: 'https://images.unsplash.com/photo-1586281380349-6320c5f11102?w=400&q=80', name: 'Porta Documentos', price: '70.000 Gs', priceNum: 70000, desc: 'Cartón reforzado, sublimado' },
+          { img: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=400&q=80', name: 'Pizarra Imantada 30x40', price: '55.000 Gs', priceNum: 55000, desc: 'Con marco y diseño personalizado' }
         ]
       }
     };
 
+    // ===== COLORES HEX PARA LOS DOTS =====
+    const colorHexMap = {
+      'Blanco': '#FFFFFF', 'Negro': '#1A1A1A', 'Rojo': '#E74C3C', 'Azul': '#3498DB',
+      'Verde': '#2ECC71', 'Rosa': '#E91E63', 'Amarillo': '#F1C40F', 'Gris': '#95A5A6',
+      'Azul marino': '#1A3A5C', 'Dorado': '#D4AF37', 'Plateado': '#C0C0C0',
+      'Blanco perlado': '#F5F5F5', 'Transparente': '#E8F4F8', 'Ámbar': '#FFBF00',
+      'Negro mágico': '#2C2C2C', 'Azul mágico': '#2C3E50', 'Rosa mágico': '#C0392B',
+      'Verde neón': '#39FF14'
+    };
+
+    // ===== MODAL =====
+    let currentOptions = {};
+
     function openModal(key) {
       const data = catalogData[key];
       if (!data) return;
-      const whatsappNumber = '595986545530';
+      currentOptions = {};
       let html = `<div class="modal-title">${data.title}</div>
         <div class="modal-sub">${data.sub}</div>
         <div class="prod-grid">`;
 
-      data.products.forEach(p => {
-        const mensaje = encodeURIComponent(`Hola DiCa Magic! Me interesa: ${p.name} (${p.price}). ¿Podrían darme más info?`);
+      data.products.forEach((p, idx) => {
+        const prodId = key + '_' + idx;
+        let optionsHtml = '';
+
+        if (p.options) {
+          if (p.options.type === 'remera') {
+            if (p.options.sizes) {
+              optionsHtml += `<div class="prod-options">
+                <label>Talla</label>
+                <select id="size_${prodId}" onchange="currentOptions['${prodId}'] = currentOptions['${prodId}'] || {}; currentOptions['${prodId}'].size = this.value">
+                  ${p.options.sizes.map(s => `<option value="${s}">${s}</option>`).join('')}
+                </select>
+              </div>`;
+            }
+            if (p.options.colors) {
+              optionsHtml += `<div class="prod-options">
+                <label>Color</label>
+                <select id="color_${prodId}" onchange="currentOptions['${prodId}'] = currentOptions['${prodId}'] || {}; currentOptions['${prodId}'].color = this.value">
+                  ${p.options.colors.map(c => `<option value="${c}">${c}</option>`).join('')}
+                </select>
+              </div>`;
+            }
+          } else if (p.options.type === 'taza') {
+            if (p.options.colors) {
+              optionsHtml += `<div class="prod-options">
+                <label>Color de taza</label>
+                <div class="color-options" id="colors_${prodId}">
+                  ${p.options.colors.map((c, ci) => {
+                    const hex = colorHexMap[c] || '#CCC';
+                    return `<div class="color-dot${ci === 0 ? ' selected' : ''}" 
+                      style="background:${hex}; border:2px solid ${hex === '#FFFFFF' || hex === '#F5F5F5' ? '#CCC' : hex}" 
+                      title="${c}"
+                      data-color="${c}"
+                      onclick="selectColor('${prodId}', '${c}', this)"></div>`;
+                  }).join('')}
+                </div>
+              </div>`;
+            }
+          }
+        }
+
         html += `<div class="prod-card">
           <img src="${p.img}" alt="${p.name}" loading="lazy" />
           <div class="prod-info">
             <h4>${p.name}</h4>
             <div class="prod-price">${p.price}</div>
             <div class="prod-desc">${p.desc}</div>
-            <a href="https://wa.me/${whatsappNumber}?text=${mensaje}" target="_blank" class="whatsapp-btn">Pedir por WhatsApp</a>
+            ${optionsHtml}
+            <div class="product-qty">
+              <label>Cant:</label>
+              <div class="qty-control">
+                <button onclick="modalQty('${prodId}', -1)">−</button>
+                <input type="text" id="qty_${prodId}" value="1" readonly />
+                <button onclick="modalQty('${prodId}', 1)">+</button>
+              </div>
+            </div>
+            <button class="add-cart-btn" onclick="addFromModal('${key}', ${idx}, '${prodId}', this)">🛒 Agregar al carrito</button>
           </div>
         </div>`;
       });
@@ -1408,17 +2189,59 @@
       document.body.style.overflow = 'hidden';
     }
 
+    function selectColor(prodId, color, el) {
+      const container = el.parentElement;
+      container.querySelectorAll('.color-dot').forEach(d => d.classList.remove('selected'));
+      el.classList.add('selected');
+      currentOptions[prodId] = currentOptions[prodId] || {};
+      currentOptions[prodId].color = color;
+    }
+
+    function modalQty(prodId, delta) {
+      const input = document.getElementById('qty_' + prodId);
+      let val = parseInt(input.value) + delta;
+      if (val < 1) val = 1;
+      input.value = val;
+    }
+
+    function addFromModal(catKey, prodIdx, prodId, btn) {
+      const product = catalogData[catKey].products[prodIdx];
+      const opts = currentOptions[prodId] || {};
+      const qty = parseInt(document.getElementById('qty_' + prodId).value) || 1;
+
+      let variantParts = [];
+      if (opts.size) variantParts.push('Talla: ' + opts.size);
+      if (opts.color) variantParts.push('Color: ' + opts.color);
+      const variant = variantParts.join(' | ');
+
+      for (let i = 0; i < qty; i++) {
+        addToCart(product, variant);
+      }
+
+      btn.textContent = '✅ Agregado';
+      btn.classList.add('added');
+      setTimeout(() => {
+        btn.textContent = '🛒 Agregar al carrito';
+        btn.classList.remove('added');
+      }, 1500);
+    }
+
     function closeModal(e) {
-      if (!e || e.target === document.getElementById('modal-overlay') || e.currentTarget.classList.contains('modal-close')) {
+      if (!e || e.target === document.getElementById('modal-overlay') || (e.currentTarget && e.currentTarget.classList.contains('modal-close'))) {
         document.getElementById('modal-overlay').classList.remove('open');
         document.body.style.overflow = '';
       }
     }
 
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeModal({ target: document.getElementById('modal-overlay') });
+      if (e.key === 'Escape') {
+        closeModal({ target: document.getElementById('modal-overlay') });
+        document.getElementById('cartPanel').classList.remove('open');
+        document.getElementById('cartOverlay').classList.remove('open');
+      }
     });
 
+    // ===== FORMULARIO CONTACTO =====
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
       contactForm.addEventListener('submit', async function(e) {
@@ -1435,7 +2258,7 @@
             formMessage.style.color = 'var(--turquesa)';
             contactForm.reset();
           } else {
-            throw new Error('Error en el envío');
+            throw new Error('Error');
           }
         } catch (error) {
           formMessage.textContent = 'Hubo un error. Por favor intentá de nuevo.';
@@ -1443,6 +2266,9 @@
         }
       });
     }
+
+    // ===== INICIALIZAR CARRITO =====
+    updateCartUI();
   </script>
 </body>
 </html>
